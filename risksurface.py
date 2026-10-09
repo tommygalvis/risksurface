@@ -141,8 +141,8 @@ def main():
         [S1_STAR], [S2_STAR],
         color='red', s=100, zorder=5, edgecolors='white'
     )
-    axes[0, 0].set_xlabel('S₁')
-    axes[0, 0].set_ylabel('S₂')
+    axes[0, 0].set_xlabel('$S_1$')
+    axes[0, 0].set_ylabel('$S_2$')
     axes[0, 0].set_title('Surface & Gradient', fontweight='bold')
     plt.colorbar(im1, ax=axes[0, 0], label='V($)')
 
@@ -151,13 +151,13 @@ def main():
         s1_range,
         portfolio_value(s1_range, S2_STAR),
         color=COLORS['secondary'], linewidth=2,
-        label=f'V(S₁, {S2_STAR})'
+        label=f'V($S_1$, {S2_STAR})'
     )
     axes[0, 1].plot(
         s1_range,
         portfolio_value(S1_STAR, s1_range),
         color=COLORS['primary'], linewidth=2,
-        label=f'V({S1_STAR}, S₂)'
+        label=f'V({S1_STAR}, $S_2$)'
     )
     axes[0, 1].axvline(S1_STAR, color='gray', linestyle='--', alpha=0.5)
     axes[0, 1].scatter([S1_STAR], [V_star], color='red', s=100, zorder=5)
@@ -173,13 +173,14 @@ def main():
         [S1_STAR], [S2_STAR],
         color='black', s=100, zorder=5, edgecolors='white'
     )
-    axes[0, 2].set_xlabel('S₁')
-    axes[0, 2].set_ylabel('S₂')
-    axes[0, 2].set_title('∂V/∂S₁ (Delta to Asset 1)', fontweight='bold')
+    axes[0, 2].set_xlabel('$S_1$')
+    axes[0, 2].set_ylabel('$S_2$')
+    axes[0, 2].set_title('∂V/∂$S_1$ (Delta to Asset 1)', fontweight='bold')
     plt.colorbar(im3, ax=axes[0, 2])
 
     # Row 2: Analysis
     # 2.1: Directional derivatives (polar)
+    axes[1, 0].remove()  # replaced by the polar axes below
     ax_polar = plt.subplot(2, 3, 4, projection='polar')
     ax_polar.plot(theta, D_u_values, color=COLORS['secondary'], linewidth=2)
     ax_polar.fill(theta, D_u_values, alpha=0.3, color=COLORS['secondary'])
@@ -210,8 +211,8 @@ def main():
         [S1_STAR], [S2_STAR],
         color='red', s=100, zorder=5, edgecolors='white'
     )
-    axes[1, 1].set_xlabel('S₁')
-    axes[1, 1].set_ylabel('S₂')
+    axes[1, 1].set_xlabel('$S_1$')
+    axes[1, 1].set_ylabel('$S_2$')
     axes[1, 1].set_title('Principal Curvature Directions', fontweight='bold')
     axes[1, 1].set_xlim(70, 130)
     axes[1, 1].set_ylim(70, 130)
